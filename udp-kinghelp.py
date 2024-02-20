@@ -1,13 +1,12 @@
-# author:
-# █ ▄▀█ █▀▄▀█ ▀█▀ █▀█ █▀█ █▀ ▀█▀
-# █ █▀█ █░▀░█ ░█░ █▄█ ▀▀█ ▄█ ░█░
-# name:
+   main()
+#author:
+#█ ▄▀█ █▀▄▀█ ▀█▀ █▀█ █▀█ █▀ ▀█▀
+#█ █▀█ █░▀░█ ░█░ █▄█ ▀▀█ ▄█ ░█░
+#name:
 # UDP-▀█▀ █▀█ █▀█ █▀ ▀█▀ █▀▀ █▀█
 #    ░█░ █▄█ ▀▀█ ▄█ ░█░ ██▄ █▀▄
-# description:
-# A tool lets you send udp flood on servers with internet traffic to prevent users from accessing connected online services or minecraft servers.
-# warning: 
-# This is strongly for educational purposes only and for testing your ddos protection, I am not responsible for any damages you have or may cause.
+#description:
+# A tool lets you send udp flood on a serverx with internet traffic to prevent users from accessing connected online services and minecraft servers
 
 import os
 import random
