@@ -2,13 +2,10 @@
 #█ ▄▀█ █▀▄▀█ ▀█▀ █▀█ █▀█ █▀ ▀█▀
 #█ █▀█ █░▀░█ ░█░ █▄█ ▀▀█ ▄█ ░█░
 #name:
-#  █░█░█▀▄░█▀█  
-# ░█▄█░█▄█░█▀▀░   ▀▀▀
-#
-# ▀█▀ █▀█ █▀█ █▀ ▀█▀ █▀▀ █▀█
-#  █░ █▄█ ▀▀█ ▄█ ░█░ ██▄ █▀▄
+# █ █ █▀▄ █▀▄    █▄▀ █▄█    ▀█▀ ██▀ ▄▀▄ █▄ ▄█
+# ▀▄█ █▄▀ █▀  ▀▀ █ █ █ █ ▀▀  █  █▄▄ █▀█ █ ▀ █
 #description:
-# A node program that sends floods on a server with internet traffic to prevent users from accessing connected online services and minecraft servers
+# A node program that send many packets to a Minecraft server to cause lag and internet traffic 
 
 import os
 import random
@@ -41,8 +38,8 @@ def run(ip_run, port_run, times_run, threads_run):
 
 def main():
     print("")
-    print("\033[1;31m█░█░█▀▄░█▀█      ▀█▀ █▀█ █▀█ █▀ ▀█▀ █▀▀ █▀█\033[0m")
-    print("\033[1;31m█▄█░█▄█░█▀▀░ ▀▀▀ ░█░ █▄█ ▀▀█ ▄█ ░█░ ██▄ █▀▄\033[0m")
+    print("\033[1;31m█ █ █▀▄ █▀▄    █▄▀ █▄█    ▀█▀ ██▀ ▄▀▄ █▄ ▄█\033[0m")
+    print("\033[1;31m▀▄█ █▄▀ █▀  ▀▀ █ █ █ █ ▀▀  █  █▄▄ █▀█ █ ▀ █\033[0m")
     print("")
     print("\033[1;31m[Warning]\033[1;37m This tool is for educational purposes \nonly, I am not responsible for any damages you \nhave caused or may cause, use it at your own risk!")
     print("")
@@ -63,7 +60,7 @@ def main():
             port = int(input("\033[1;31m[#]\033[0m ""\033[1;37mEnter target port: \033[0m "))
             break  # Exit the loop if conversion to int is successful
         except ValueError:
-            print("\033[1;31m[!]\033[0m \033[1;37mInvalid input. Please enter a valid integer for the port.\033[0m")
+            print("\033[1;31m[!]\033[0m \033[1;37mInvalid input. Please enter a valid number for the port.\033[0m")
         except KeyboardInterrupt:
             print("\n\033[1;31m[!]\033[0m \033[1;37mScript terminated by user (Ctrl+C). Exiting.\033[0m")
             sys.exit(0)
