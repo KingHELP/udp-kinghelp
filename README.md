@@ -19,7 +19,7 @@ apt -y upgrade
 
 apt install git
 apt install python
-git clone https://github.com/IamToqst/udp-kinghelp
+git clone https://github.com/KingHELP/udp-kinghelp
 cd udp-kinghelp
 
 
@@ -34,7 +34,7 @@ sudo apt update && sudo apt upgrade
 
 sudo apt install git
 sudo apt install python
-git clone https://github.com/IamToqst/udp-kinghelp
+git clone https://github.com/KingHELP/udp-kinghelp
 cd udp-kinghelp
 
 ```
