@@ -1,18 +1,21 @@
-#author:
-#█ ▄▀█ █▀▄▀█ ▀█▀ █▀█ █▀█ █▀ ▀█▀
-#█ █▀█ █░▀░█ ░█░ █▄█ ▀▀█ ▄█ ░█░
-#name:
+    main()
+# author:
+# █ ▄▀█ █▀▄▀█ ▀█▀ █▀█ █▀█ █▀ ▀█▀
+# █ █▀█ █░▀░█ ░█░ █▄█ ▀▀█ ▄█ ░█░
+# name:
 # UDP-▀█▀ █▀█ █▀█ █▀ ▀█▀ █▀▀ █▀█
 #    ░█░ █▄█ ▀▀█ ▄█ ░█░ ██▄ █▀▄
-#description:
-# A tool lets you send udp flood on a serverx with internet traffic to prevent users from accessing connected online services and minecraft servers
+# description:
+# A potent UDP flooding tool designed for stress testing network resilience and evaluating security measures.
+# warning: 
+# This is strongly for educational purposes only and for testing your ddos protection, I am not responsible for any damages you have or may cause.
 
-import os
-import random
 import sys
-import socket
-import threading
+import os
 import ipaddress
+import random
+import threading
+import socket
 
 os.system('clear' if os.name == 'posix' else 'cls')
 
@@ -65,7 +68,7 @@ def main():
     if not is_valid_ipv4(target):
         try:
             ip = socket.gethostbyname(target)
-            print(f"\033[1;31m[+]\033[0m Resolved \033[1;38;2;255;100;100m{target}\033[1;37m to \033[1;38;2;255;100;100m{ip}\033[1;37m")
+            print(f"\033[1;31m[+]\033[0m Resolved \033[1;38;2;255;100;100m{target}\033[0m to \033[1;38;2;255;100;100m{ip}\033[1;37m")
         except socket.error as e:
             print("\033[1;31m[!]\033[0m \033[1;37mError resolving the target: {}\033[0m".format(e))
             sys.exit(1)
